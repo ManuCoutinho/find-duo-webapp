@@ -1,0 +1,20 @@
+/* stylelint-disable at-rule-no-unknown */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply bg-[#121214] bg-galaxy bg-cover bg-no-repeat;
+}
+
+html {
+  @apply font-sans;
+}
+
+input[type='number']::-webkit-inner-spin-button {
+  display: none;
+}
+
+input[type='time']::-webkit-calendar-picker-indicator {
+  display: none;
+}
