@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { GameController } from 'phosphor-react'
 import { Close } from '@radix-ui/react-dialog'
 import { BoxInput } from '../BoxInput'
@@ -5,9 +6,12 @@ import { Input } from '../Input'
 import { Label } from '../Label'
 import { InputCheckbox } from '../InputCheckbox'
 import { Select } from '../Select'
+import { SelectButton } from '../SelectButton'
+import weekDays from '../../data/weekDays'
 import { FormProps } from './types'
 
 export const FormCreateAd: React.FC<FormProps> = ({ data }) => {
+  const [selected, setSelected] = useState()
   return (
     <form
       action='post'
@@ -46,10 +50,11 @@ export const FormCreateAd: React.FC<FormProps> = ({ data }) => {
       <div className='grid grid-cols-2 gap-6'>
         <BoxInput>
           <Label htmlFor='week-days'>Quando costuma jogar?</Label>
+          <SelectButton data={weekDays} />
         </BoxInput>
         <BoxInput>
           <Label htmlFor='hour-start'>Qual horário do dia?</Label>
-          <div className='flex gap-[6px] flex-1'>
+          <div className='flex gap-[6px] flex-row'>
             <Input type='time' id='hour-start' placeholder='De' />
             <Input type='time' id='hour-end' placeholder='Até' />
           </div>

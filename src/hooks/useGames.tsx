@@ -5,7 +5,7 @@ import { api } from '../lib/api'
 const getGames = async () => {
   try {
     const { data, status } = await api.get('games')
-    if (status === 200) {
+    if (status === 200 && data.length > 0) {
       return data
     }
     return
