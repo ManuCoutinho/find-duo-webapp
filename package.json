@@ -1,7 +1,8 @@
 {
-  "name": "vite-template",
+  "name": "find-duo-webapp",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
+  "author": "Emanuela Coutinho",
   "engines": {
     "node": ">=16.15.1",
     "npm": ">=8.11.0"
@@ -10,12 +11,20 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "lint:scripts": "eslint --ext .ts,.tsx src",
-    "lint:styles": "stylelint \"src/**/*.css\"",
+    "lint": "eslint --ext .ts,.tsx src",
     "test": "jest",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "prepare": "husky install"
+  },
+  "lint-staged": {
+    ".{ts,tsx}": [
+      "npm run lint --fix",
+      "npm run test --findRelatedTests --bail"
+    ],
+    ".{json,md}": [
+      "prettier --write"
+    ]
   },
   "dependencies": {
     "@radix-ui/react-checkbox": "^1.0.0",
@@ -62,6 +71,7 @@
     "identity-obj-proxy": "^3.0.0",
     "jest": "^28.1.2",
     "jest-environment-jsdom": "^28.1.2",
+    "lint-staged": "^13.0.3",
     "postcss": "^8.4.16",
     "prettier": "^2.7.1",
     "semantic-release": "^19.0.3",
