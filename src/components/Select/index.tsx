@@ -7,7 +7,7 @@ export const Select: React.FC<SelectProps> = ({ data, placeholder, name }) => {
     <List.Root>
       <List.Trigger
         aria-label={name}
-        className='bg-zinc-900 py-3 px-4 text-sm placeholder:text-zinc-500 rounded items-start flex justify-between'
+        className='bg-zinc-900 py-3 px-4 text-sm placeholder:text-zinc-500 rounded items-start flex justify-between outline-0 focus-within:ring-2 focus-within:ring-offset-1 focus-within:ring-violet-500 focus-within:outline-violet-600'
       >
         <List.Value placeholder={placeholder} />
         <List.Icon>

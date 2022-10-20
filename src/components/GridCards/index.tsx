@@ -1,8 +1,8 @@
+import { Fragment } from 'react'
 import { useKeenSlider } from 'keen-slider/react'
 import { useGames } from '../../hooks/useGames'
 import { CaretLeft, CaretRight } from 'phosphor-react'
 import 'keen-slider/keen-slider.min.css'
-import { Fragment } from 'react'
 
 export const GridCards: React.FC = () => {
   const games = useGames()

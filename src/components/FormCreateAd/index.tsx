@@ -69,14 +69,14 @@ export const FormCreateAd: React.FC<FormProps> = ({ data }) => {
       </div>
       <footer className='flex gap-4 justify-end items-center w-full font-semibold mt-8'>
         <Close
-          className='bg-zinc-500 rounded-md px-5 py-3 hover:bg-zinc-600 transition-colors delay-75'
+          className='bg-zinc-500 rounded-md px-5 py-3 hover:bg-zinc-600 transition-colors delay-75 outline-0 focus:ring-2 focus:ring-offset-1 focus:ring-violet-500 focus:outline-violet-600'
           type='button'
         >
           Cancelar
         </Close>
         <button
           type='submit'
-          className='flex gap-3 items-center bg-violet-500 hover:bg-violet-700 py-3 px-5 rounded-md transition-colors delay-75'
+          className='flex gap-3 items-center bg-violet-500 hover:bg-violet-700 py-3 px-5 rounded-md transition-colors delay-75 outline-0 focus:ring-2 focus:ring-offset-1 focus:ring-violet-500 focus:outline-violet-600'
         >
           <GameController size={24} />
           Encontrar Duo

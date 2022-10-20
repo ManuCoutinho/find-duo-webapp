@@ -19,7 +19,7 @@ export const Dialog: FC = () => {
   return (
     <Modal.Portal>
       <Modal.Overlay className='bg-black/40 inset-0 fixed' />
-      <Modal.Content className='w-[480px] fixed bg-[#2a2634] px-10 py-8 text-zinc-50 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-lg shadow-black/40'>
+      <Modal.Content className='w-[488px] fixed bg-[#2a2634] px-10 py-8 text-zinc-50 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-lg shadow-black/40'>
         <Modal.Title className='font-black text-3xl mb-8'>
           Publique um anúncio
         </Modal.Title>
