@@ -2,14 +2,22 @@ import * as List from '@radix-ui/react-select'
 import { CaretDown, CaretUp, Check } from 'phosphor-react'
 import { SelectProps } from './types'
 
-export const Select: React.FC<SelectProps> = ({ data, placeholder, name }) => {
+export const Select: React.FC<SelectProps> = ({
+  data,
+  placeholder,
+  value,
+  onValueChange
+}) => {
+  const nameSelected = data?.filter((d) => d.value === value).map((f) => f.item)
   return (
-    <List.Root>
+    <List.Root value={value} onValueChange={onValueChange}>
       <List.Trigger
-        aria-label={name}
+        aria-label={value}
         className='bg-zinc-900 py-3 px-4 text-sm placeholder:text-zinc-500 rounded items-start flex justify-between outline-0 focus-within:ring-2 focus-within:ring-offset-1 focus-within:ring-violet-500 focus-within:outline-violet-600'
       >
-        <List.Value placeholder={placeholder} />
+        <List.Value aria-label={value}>
+          {!value ? placeholder : nameSelected}
+        </List.Value>
         <List.Icon>
           <CaretDown size={20} className='text-zinc-400' />
         </List.Icon>

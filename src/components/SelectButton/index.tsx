@@ -1,8 +1,11 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import * as Toggle from '@radix-ui/react-toggle-group'
 import { SelectButtonProps } from './types'
 
-export const SelectButton: React.FC<SelectButtonProps> = ({ data }) => {
+export const SelectButton: React.FC<SelectButtonProps> = ({
+  data,
+  onValueChange
+}) => {
   const [selected, setSelected] = useState<string[]>([])
   const handleChange = (value: string) => {
     if (!selected.includes(value)) {
@@ -13,6 +16,9 @@ export const SelectButton: React.FC<SelectButtonProps> = ({ data }) => {
       setSelected((prev) => [...prev])
     }
   }
+  useEffect(() => {
+    onValueChange(selected)
+  }, [selected, onValueChange])
 
   return (
     <Toggle.Root
@@ -25,6 +31,7 @@ export const SelectButton: React.FC<SelectButtonProps> = ({ data }) => {
         ?.sort((a, b) => a.id.localeCompare(b.id))
         .map((d) => (
           <Toggle.Item
+            asChild
             value={d.id}
             key={d.id}
             onClick={() => handleChange(d.id)}
@@ -32,7 +39,7 @@ export const SelectButton: React.FC<SelectButtonProps> = ({ data }) => {
             <button
               title={d.title}
               type='button'
-              className={`mt-2 ml-1 w-10 h-10  rounded text-neutral-50 font-semibold uppercase ${
+              className={`mt-2 ml-2 md:ml-1 w-10 h-10  rounded text-neutral-50 font-semibold uppercase outline-0 focus-within:ring-2 focus-within:ring-offset-1 focus-within:ring-violet-500 focus-within:outline-violet-600 ${
                 selected.includes(d.id) ? 'bg-violet-500' : 'bg-zinc-900'
               }`}
             >
