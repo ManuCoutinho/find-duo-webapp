@@ -1,5 +1,6 @@
 export interface SelectButtonProps {
   data: Array<WeekDays>
+  onValueChange: React.Dispatch<string[]>
 }
 
 export type WeekDays = {

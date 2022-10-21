@@ -19,7 +19,7 @@
   "include": [
     "./src",
     "./src/styles/theme/renderTheme.ts",
-    "./src/.jest/setupTests.ts",
+    ".jest/jest.setup.ts",
     "**/*.ts",
     "**/*.tsx",
     "**/*.spec.tsx"
