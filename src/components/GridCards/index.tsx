@@ -8,9 +8,12 @@ import * as Dialog from '@radix-ui/react-dialog'
 import { DialogAd } from '../DialogAd'
 import { CardAd } from '../CardAd'
 import { api } from '../../lib/api'
+import mockGames from '../../data/mockGames'
 
 import 'keen-slider/keen-slider.min.css'
+
 export const GridCards: React.FC = () => {
+  //com a API conectada usar o hook
   const games = useGames()
   const [options, setOptions] = useState({})
   const [data, setData] = useState([])
@@ -90,7 +93,7 @@ export const GridCards: React.FC = () => {
   return (
     <Dialog.Root>
       <section className='flex flex-row mt-16 keen-slider px-6' ref={slider}>
-        {games?.map((card) => (
+        {mockGames?.map((card) => (
           <Fragment key={uuidv4()}>
             <Dialog.Trigger
               className='keen-slider__slide rounded-lg text-left'

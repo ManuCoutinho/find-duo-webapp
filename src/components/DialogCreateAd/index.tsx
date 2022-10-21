@@ -4,13 +4,15 @@ import * as Modal from '@radix-ui/react-dialog'
 import { GameSelect } from '../Select/types'
 import { useGames } from '../../hooks/useGames'
 import { DialogCreateAdProps } from './types'
+import mockGames from '../../data/mockGames'
 
 export const DialogCreateAd: FC<DialogCreateAdProps> = ({ handleClose }) => {
   const [data, setData] = useState<GameSelect[]>([])
-
+  //com a API conectada usar o hook
   const games = useGames()
+
   useEffect(() => {
-    const getItems = games?.map((game) => {
+    const getItems = mockGames?.map((game) => {
       return {
         value: game.id,
         item: game.title
