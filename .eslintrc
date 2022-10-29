@@ -13,6 +13,7 @@
     "node": true,
     "jest": true
   },
+  "overrides": [],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaVersion": "latest",
@@ -28,8 +29,6 @@
     "@typescript-eslint/no-var-requires": "off"
   },
   "settings": {
-    "react": {
-      "version": "detect"
-    }
+    "version": "detect"
   }
 }

@@ -1,7 +1,7 @@
 import { Fragment, useEffect, useState } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 import { useKeenSlider } from 'keen-slider/react'
-import { KeenSliderInstance } from 'keen-slider'
+import { KeenSliderInstance, KeenSliderOptions } from 'keen-slider'
 import { CaretLeft, CaretRight } from 'phosphor-react'
 import { useGames } from '../../hooks/useGames'
 import * as Dialog from '@radix-ui/react-dialog'
@@ -15,8 +15,29 @@ import 'keen-slider/keen-slider.min.css'
 export const GridCards: React.FC = () => {
   //com a API conectada usar o hook
   const games = useGames()
-  const [options, setOptions] = useState({})
   const [data, setData] = useState([])
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const options: KeenSliderOptions = {
+    loop: true,
+    drag: true,
+    mode: 'free-snap',
+    breakpoints: {
+      '(max-width: 480px)': {
+        slides: { perView: 2, spacing: 8 }
+      },
+      '(min-width: 481px) and (max-width: 1024px)': {
+        slides: { perView: 3, spacing: 20 }
+      },
+      '(min-width: 1025px)': {
+        slides: { perView: 6, spacing: 64 }
+      }
+    },
+    slides: {
+      perView: 6,
+      spacing: 64
+    }
+  }
+
   const [slider, instance] = useKeenSlider<HTMLDivElement>(options, [
     (slider: KeenSliderInstance) => {
       let timeout: ReturnType<typeof setTimeout>
@@ -61,34 +82,8 @@ export const GridCards: React.FC = () => {
     }
   }
   useEffect(() => {
-    setTimeout(
-      () =>
-        setOptions(
-          {
-            loop: true,
-            drag: true,
-            mode: 'free-snap',
-            breakpoints: {
-              '(max-width: 480px)': {
-                slides: { perView: 2, spacing: 8 }
-              },
-              '(min-width: 481px) and (max-width: 1024px)': {
-                slides: { perView: 3, spacing: 20 }
-              },
-              '(min-width: 1025px)': {
-                slides: { perView: 6, spacing: 64 }
-              }
-            },
-            slides: {
-              perView: 6,
-              spacing: 64
-            }
-          }
-          //plugins
-        ),
-      10
-    )
-  }, [])
+    instance.current?.update(options)
+  }, [instance, options])
 
   return (
     <Dialog.Root>
